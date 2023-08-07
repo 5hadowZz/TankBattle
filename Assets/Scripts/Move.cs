@@ -5,9 +5,11 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     public Transform head;
+    public Transform gunBarrel;
     public float moveSpeed = 10f;
     public float rotateSpeed = 60f;
     public float headRotateSpeed = 400f;
+    public float barrelRotateSpeed = 400f;
 
     void Update()
     {
@@ -22,5 +24,8 @@ public class Move : MonoBehaviour
 
         // 鼠标旋转头部
         head.Rotate(Vector3.up * headRotateSpeed * Time.deltaTime * Input.GetAxis("Mouse X"));
+
+        // 鼠标滚轮移动炮管
+        gunBarrel.Rotate(Vector3.right * barrelRotateSpeed * Time.deltaTime * Input.mouseScrollDelta.y);
     }
 }
